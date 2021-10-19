@@ -16,5 +16,9 @@ describe("Testing mock functions", () => {
     test("The first argument of the second call to the function was 1", () => {
       expect(mockCallback.mock.calls[1][0]).toBe(1);
     });
+
+    test("The return value of the first call to the function was 42", () => {
+      expect(mockCallback.mock.results[0].value).toBe(42);
+    });
   });
 });

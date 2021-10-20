@@ -59,3 +59,13 @@ test('mockImplementationOnce works', () => {
   expect(myMockFn()).toBe(true);
   expect(myMockFn()).toBe(false);
 });
+
+describe('mock matchers', () => {
+  let mockFn = jest.fn((x) => 2 * x);
+
+  test('The function has been called with the number 8', () => {
+    mockFn(8);
+    expect(mockFn).toHaveBeenCalled();
+    expect(mockFn).toHaveBeenCalledWith(8);
+  });
+});

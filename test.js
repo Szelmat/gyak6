@@ -1,4 +1,6 @@
+import axios from "axios";
 import { forEach } from "./main";
+import { Users } from "./users";
 
 describe("Testing mock functions", () => { 
   let mockCallback = jest.fn((x) => 42 + x);

@@ -21,4 +21,17 @@ describe("Testing mock functions", () => {
       expect(mockCallback.mock.results[0].value).toBe(42);
     });
   });
+
+  describe("Testing .mock()", () => {
+    // Minden mock függvény tartalmaz egy .mock tulajdonságot, ami a függvény
+    // hívásának módjáról tárol információt
+    // Eltárolja az összes this értéket is
+    const a = new mockCallback();
+    const b = {};
+    const bound = mockCallback.bind(b);
+    test("the instances of mockCallback contain a and b", () => {
+      expect(mockCallback.mock.instances).toEqual(expect.arrayContaining([a]));
+      expect(mockCallback.mock.instances).toEqual(expect.arrayContaining([b]));
+    });
+  });
 });

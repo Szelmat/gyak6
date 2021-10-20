@@ -37,3 +37,15 @@ describe("Testing mock functions", () => {
     });
   });
 });
+
+describe('mocking axios', () => {
+  jest.mock('axios');
+  test('should fetch users', () => {
+    axios.get = jest.fn();
+    const users = [{name: 'Bob'}];
+    const resp = {data: users};
+    (axios.get).mockResolvedValue(resp);
+
+    return Users.all().then(data => expect(data).toEqual(users))
+  });
+});

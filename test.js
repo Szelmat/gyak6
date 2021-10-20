@@ -49,3 +49,13 @@ describe('mocking axios', () => {
     return Users.all().then(data => expect(data).toEqual(users))
   });
 });
+
+const myMockFn = jest
+  .fn()
+  .mockImplementationOnce((x) => true)
+  .mockImplementationOnce((x) => false);
+
+test('mockImplementationOnce works', () => {
+  expect(myMockFn()).toBe(true);
+  expect(myMockFn()).toBe(false);
+});
